@@ -3,7 +3,7 @@
 
 require_once 'Bicycle.php';
 require_once 'Car.php';
-require_once 'Truck';
+require_once 'Truck.php';
 
 $bicycle = new Bicycle('blue', 1);
 echo $bicycle->forward();
