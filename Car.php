@@ -1,74 +1,49 @@
 <?php
 
-class Car{
-    public $color;
-    public $currentSpeed;
-    public $nbSeats = 5;
-    public $nbWheels = 4;
-    public $fuel;
-    public $fuelLevel = 1;
+require_once 'Vehicle.php';
 
-    public function start()
-    {
-        $this->start();
-        return "I started";
-    }
-    public function forward()
-    {
-        $this->currentSpeed = 130;
-        return "Let's go";
+class Car extends Vehicle
+{
+    const ALLOWED_ENERGIES = [
+        'fuel',
+        'electric',
+        ];
+    /**
+     * @var string
+     */
+    private $energy;
 
+    /**
+     * @var int
+     */
+    private $energyLevel;
+
+    public function __construct(string $color, int $nbSeats, string $energy)
+    {
+        parent::__construct($color, $nbSeats);
+        $this->setEnergy($energy);
     }
-    public function brake()
-    { $sentence = "";
-        while ($this->currentSpeed > 0) {
-            $this->currentSpeed--;
-            $sentence .= "Please brake";
+
+    public function getEnergy(): string
+    {
+        return $this->energy;
+    }
+
+    public function setEnergy(string $energy): Car
+    {
+        if (in_array($energy, self::ALLOWED_ENERGIES)) {
+            $this->energy = $energy;
         }
-        $sentence .= "Stopped!";
-        return $sentence;
-
-    }
-    public function __construct($color, $fuel, $nbSeats)
-    {
-        $this->color = $color;
-        $this->nbSeats = $nbSeats;
-        $this->fuel = $fuelLevel;
-    }
-    public function getNbWheels()
-    {
-        return $this->nbWheels;
+        return $this;
     }
 
-    public function getColor()
+    public function getEnergyLevel(): int
     {
-        return $this->color;
+        return $this->energyLevel;
     }
 
-    public function setColor($color)
+    public function setEnergyLevel(int $energyLevel): void
     {
-        $this->color = $color;
+        $this->energyLevel = $energyLevel;
     }
-
-    public function getCurrentSpeed()
-    {
-        return $this->currentSpeed;
-    }
-
-    public function getNbSeats()
-    {
-        return $this->nbSeats;
-    }
-
-    public function getfuelLevel()
-    {
-        return $this->fuelLevel;
-    }
-
-    public function getfuel()
-    {
-        return $this->fuel;
-    }
-
 }
-

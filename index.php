@@ -1,36 +1,28 @@
 <?php
+
+
 require_once 'Bicycle.php';
-$bike = new Bicycle();
-var_dump($bike)
-;
-echo "<br/>";
-echo "<hr/>";
-
-$bike->color = "Red";
-$bike->currentSpeed = 150;
-var_dump($bike);
-
-echo "<br/>";
-echo "<br/>";
-
-// Moving bike
-echo $bike->forward();
-echo '<br> Vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
-echo $bike->brake();
-echo '<br> Vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
-echo $bike->brake();
-
 require_once 'Car.php';
-$voiture = new Car('blue', 'diesel', 130);
-var_dump($voiture);
-echo "<br/>";
-echo "<hr/>";
+require_once 'Truck';
 
-echo "<br/>";
-echo "<br/>";
+$bicycle = new Bicycle('blue', 1);
+echo $bicycle->forward();
+var_dump($bicycle);
+echo '<hr/>';
 
-//Moving car
-echo $voiture->start();
-echo $voiture->forward();
-echo $voiture->brake();
+$car = new Car('green', 4, 'electric');
+echo $car->forward();
+var_dump($car);
+echo '<hr/>';
 
+var_dump(Car::ALLOWED_ENERGIES);
+echo'<hr/>';
+
+$truck = new truck ('yellow',10,'diesel',100);
+echo $truck->forward();
+echo '<br> capacité du camion' . $truck->getCapacity() .'tonne' .'<br>';
+echo '<br> chargement du camion' . $truck->getLoading() . 'tonne' .'<br>';
+echo $truck->loading();
+echo '<br> chargement : ' . $truck->getLoading() . 'tonne' . '<br>';
+echo $truck->loading();
+var_dump($truck);
